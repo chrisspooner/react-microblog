@@ -1,10 +1,10 @@
-import Body from "../components/Body";
+import Body from '../components/Body';
+import Posts from '../components/Posts';
 
 export default function ExplorePage() {
-    return (
-        <Body sidebar>
-            <h1>Explore</h1>
-            <p>To-Do</p>
-        </Body>
-    );
+  return (
+    <Body sidebar>
+      <Posts content="explore" />
+    </Body>
+  );
 }
