@@ -14,9 +14,9 @@ export default function ApiProvider({ children }) {
 }
 
 export function useApi() {
-//   const context = useContext(ApiContext);
-//   if (context === undefined) {
-//     throw new Error('useApi must be used in an ApiProvider');
-//   }
-  return useContext(ApiContext);
+  const context = useContext(ApiContext);
+  if (context === undefined) {
+    throw new Error('useApi must be used in an ApiProvider');
+  }
+  return context;
 }

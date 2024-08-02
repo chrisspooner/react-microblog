@@ -29,6 +29,15 @@ export default class MicroblogApiClient {
 
     async request(options) {
         let response = await this.requestInternal(options);
+        if (response.status === 401 && options.url !== '/tokens') {
+            const refreshResponse = await this.put('/tokens', {
+                access_token: localStorage.getItem('accessToken'),
+            });
+            if (refreshResponse.ok) {
+                localStorage.setItem('accessToken', refreshResponse.body.access_token);
+                response = await this.requestInternal(options);
+            }
+        }
         return response;
       }
 
