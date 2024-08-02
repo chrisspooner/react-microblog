@@ -31,5 +31,9 @@ export default function FlashProvider({ children }) {
 }
 
 export function useFlash() {
-  return useContext(FlashContext).flash;
+  const context = useContext(FlashContext).flash;
+  if (context === undefined || context.flash === undefined) {
+    throw new Error('useFlash must be used within a FlashProvider');
+  }
+  return context
 }
