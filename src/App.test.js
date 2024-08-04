@@ -3,6 +3,9 @@ import App from './App';
 
 test('renders learn react link', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+  const element = screen.getByText(/Microblog/);
+  
+  expect(element).toBeInTheDocument();
+  expect(element).toHaveClass('navbar-brand');
 });
