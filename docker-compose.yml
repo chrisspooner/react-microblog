@@ -1,0 +1,23 @@
+services:
+  frontend:
+    build: .
+    image: react-microblog:latest
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    depends_on:
+      - api
+
+  api:
+    build:
+      context: ../microblog-api
+    image: microblog-api:latest
+    volumes:
+      - data:/data
+    env_file: .env.api
+    environment:
+      - DATABASE_URL=sqlite:////data/db.sqlite
+    restart: unless-stopped
+
+volumes:
+  data:

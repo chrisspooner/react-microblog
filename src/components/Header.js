@@ -8,7 +8,7 @@ export default function Header() {
     return (
         <Navbar bg="light" sticky="top" className="Header">
           <Container>
-            <Navbar.Brand>Microblog</Navbar.Brand>
+            <Navbar.Brand as={NavLink} to="/" >Microblog</Navbar.Brand>
             <Nav>
               {user === undefined ?
                 <Spinner animation="border" />
